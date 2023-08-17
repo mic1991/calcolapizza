@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calcolatore Proporzioni</title>
+<style>
+  /* Stili CSS per la formattazione della pagina */
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+  }
+  input, button {
+    margin: 10px;
+  }
+</style>
+</head>
+<body>
+  <h1>Il calcola pizza di Michele</h1>
+  
+  <label for="num_panetti">Numero di panetti:</label>
+  <input type="number" id="num_panetti" min="1">
+  
+  <label for="peso_panetto">Peso di ciascun panetto (g):</label>
+  <input type="number" id="peso_panetto" min="1">
+  
+  <button onclick="calcolaProporzioni()">Calcola</button>
+  
+  <div id="risultati" style="display: none;">
+    <h2>Risultati:</h2>
+    <p id="quantita_farina"></p>
+    <p id="quantita_acqua"></p>
+    <p id="quantita_malto"></p>
+    <p id="quantita_lievito_secco"></p>
+    <p id="quantita_lievito_fresco"></p>
+    <p id="quantita_sale"></p>
+  </div>
+  
+  <script>
+    function calcolaProporzioni() {
+      const num_panetti = parseInt(document.getElementById("num_panetti").value);
+      const peso_panetto = parseInt(document.getElementById("peso_panetto").value);
+      
+      const quantita_farina = ((num_panetti * peso_panetto * 650) / 1120).toFixed(1);
+      const quantita_acqua = ((num_panetti * peso_panetto * 450) / 1120).toFixed(1);
+      const quantita_malto = ((num_panetti * peso_panetto * 12) / 1120).toFixed(1);
+      const quantita_lievito_secco = ((num_panetti * peso_panetto * 3.5) / 1120).toFixed(1);
+      const quantita_lievito_fresco = ((num_panetti * peso_panetto * 7) / 1120).toFixed(1);
+      const quantita_sale = ((num_panetti * peso_panetto * 12) / 1120).toFixed(1);
+      
+      document.getElementById("quantita_farina").textContent = `Quantità di farina: ${quantita_farina} g`;
+      document.getElementById("quantita_acqua").textContent = `Quantità di acqua: ${quantita_acqua} g`;
+      document.getElementById("quantita_malto").textContent = `Quantità di malto: ${quantita_malto} g`;
+      document.getElementById("quantita_lievito_secco").textContent = `Quantità di lievito secco: ${quantita_lievito_secco} g`;
+      document.getElementById("quantita_lievito_fresco").textContent = `Quantità di lievito fresco: ${quantita_lievito_fresco} g`;
+      document.getElementById("quantita_sale").textContent = `Quantità di sale: ${quantita_sale} g`;
+      
+      document.getElementById("risultati").style.display = "block";
+    }
+  </script>
+</body>
+</html>
